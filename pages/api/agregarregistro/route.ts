@@ -1,11 +1,12 @@
-import { NextRequest, NextResponse } from 'next/server';
+
+import { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient, TransactionType } from '../../../generated/prisma';
 
 const prisma = new PrismaClient();
 
-export async function POST(req: NextRequest) {
+export async function POST(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const body = await req.json();
+    const body = await req.body;
     const { amount, description, type } = body;
 
     if (
@@ -13,7 +14,7 @@ export async function POST(req: NextRequest) {
       typeof description !== 'string' ||
       !['INCOME', 'EXPENSE'].includes(type)
     ) {
-      return NextResponse.json({ error: 'Datos inválidos' }, { status: 400 });
+      return res.json({ error: 'Datos inválidos' });
     }
 
     const registro = await prisma.transaction.create({
@@ -24,8 +25,8 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    return NextResponse.json(registro, { status: 201 });
+    return res.json(registro);
   } catch (error) {
-    return NextResponse.json({ error: 'Error al agregar registro', details: error }, { status: 500 });
+    return res.json({ error: 'Error al agregar registro', details: error });
   }
 }
