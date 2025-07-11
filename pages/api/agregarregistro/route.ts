@@ -7,11 +7,13 @@ const prisma = new PrismaClient();
 export async function POST(req: NextApiRequest, res: NextApiResponse) {
   try {
     const body = await req.body;
-    const { amount, description, type } = body;
+    const { amount, description, category, type, date } = body;
 
     if (
       typeof amount !== 'number' ||
       typeof description !== 'string' ||
+      typeof category !== 'string' ||
+      typeof date !== 'string' ||
       !['INCOME', 'EXPENSE'].includes(type)
     ) {
       return res.json({ error: 'Datos inválidos' });
@@ -21,7 +23,9 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
       data: {
         amount,
         description,
+        category,
         type: type as TransactionType,
+        date,
       },
     });
 

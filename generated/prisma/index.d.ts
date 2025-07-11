@@ -913,6 +913,7 @@ export namespace Prisma {
     amount: number | null
     description: string | null
     type: $Enums.TransactionType | null
+    category: string | null
     date: Date | null
   }
 
@@ -921,6 +922,7 @@ export namespace Prisma {
     amount: number | null
     description: string | null
     type: $Enums.TransactionType | null
+    category: string | null
     date: Date | null
   }
 
@@ -929,6 +931,7 @@ export namespace Prisma {
     amount: number
     description: number
     type: number
+    category: number
     date: number
     _all: number
   }
@@ -949,6 +952,7 @@ export namespace Prisma {
     amount?: true
     description?: true
     type?: true
+    category?: true
     date?: true
   }
 
@@ -957,6 +961,7 @@ export namespace Prisma {
     amount?: true
     description?: true
     type?: true
+    category?: true
     date?: true
   }
 
@@ -965,6 +970,7 @@ export namespace Prisma {
     amount?: true
     description?: true
     type?: true
+    category?: true
     date?: true
     _all?: true
   }
@@ -1060,6 +1066,7 @@ export namespace Prisma {
     amount: number
     description: string
     type: $Enums.TransactionType
+    category: string
     date: Date
     _count: TransactionCountAggregateOutputType | null
     _avg: TransactionAvgAggregateOutputType | null
@@ -1087,6 +1094,7 @@ export namespace Prisma {
     amount?: boolean
     description?: boolean
     type?: boolean
+    category?: boolean
     date?: boolean
   }, ExtArgs["result"]["transaction"]>
 
@@ -1095,6 +1103,7 @@ export namespace Prisma {
     amount?: boolean
     description?: boolean
     type?: boolean
+    category?: boolean
     date?: boolean
   }, ExtArgs["result"]["transaction"]>
 
@@ -1103,6 +1112,7 @@ export namespace Prisma {
     amount?: boolean
     description?: boolean
     type?: boolean
+    category?: boolean
     date?: boolean
   }, ExtArgs["result"]["transaction"]>
 
@@ -1111,10 +1121,11 @@ export namespace Prisma {
     amount?: boolean
     description?: boolean
     type?: boolean
+    category?: boolean
     date?: boolean
   }
 
-  export type TransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "amount" | "description" | "type" | "date", ExtArgs["result"]["transaction"]>
+  export type TransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "amount" | "description" | "type" | "category" | "date", ExtArgs["result"]["transaction"]>
 
   export type $TransactionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Transaction"
@@ -1124,6 +1135,7 @@ export namespace Prisma {
       amount: number
       description: string
       type: $Enums.TransactionType
+      category: string
       date: Date
     }, ExtArgs["result"]["transaction"]>
     composites: {}
@@ -1552,6 +1564,7 @@ export namespace Prisma {
     readonly amount: FieldRef<"Transaction", 'Float'>
     readonly description: FieldRef<"Transaction", 'String'>
     readonly type: FieldRef<"Transaction", 'TransactionType'>
+    readonly category: FieldRef<"Transaction", 'String'>
     readonly date: FieldRef<"Transaction", 'DateTime'>
   }
     
@@ -1938,6 +1951,7 @@ export namespace Prisma {
     amount: 'amount',
     description: 'description',
     type: 'type',
+    category: 'category',
     date: 'date'
   };
 
@@ -2046,6 +2060,7 @@ export namespace Prisma {
     amount?: FloatFilter<"Transaction"> | number
     description?: StringFilter<"Transaction"> | string
     type?: EnumTransactionTypeFilter<"Transaction"> | $Enums.TransactionType
+    category?: StringFilter<"Transaction"> | string
     date?: DateTimeFilter<"Transaction"> | Date | string
   }
 
@@ -2054,6 +2069,7 @@ export namespace Prisma {
     amount?: SortOrder
     description?: SortOrder
     type?: SortOrder
+    category?: SortOrder
     date?: SortOrder
   }
 
@@ -2065,6 +2081,7 @@ export namespace Prisma {
     amount?: FloatFilter<"Transaction"> | number
     description?: StringFilter<"Transaction"> | string
     type?: EnumTransactionTypeFilter<"Transaction"> | $Enums.TransactionType
+    category?: StringFilter<"Transaction"> | string
     date?: DateTimeFilter<"Transaction"> | Date | string
   }, "id">
 
@@ -2073,6 +2090,7 @@ export namespace Prisma {
     amount?: SortOrder
     description?: SortOrder
     type?: SortOrder
+    category?: SortOrder
     date?: SortOrder
     _count?: TransactionCountOrderByAggregateInput
     _avg?: TransactionAvgOrderByAggregateInput
@@ -2089,6 +2107,7 @@ export namespace Prisma {
     amount?: FloatWithAggregatesFilter<"Transaction"> | number
     description?: StringWithAggregatesFilter<"Transaction"> | string
     type?: EnumTransactionTypeWithAggregatesFilter<"Transaction"> | $Enums.TransactionType
+    category?: StringWithAggregatesFilter<"Transaction"> | string
     date?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
   }
 
@@ -2096,6 +2115,7 @@ export namespace Prisma {
     amount: number
     description: string
     type: $Enums.TransactionType
+    category: string
     date?: Date | string
   }
 
@@ -2104,6 +2124,7 @@ export namespace Prisma {
     amount: number
     description: string
     type: $Enums.TransactionType
+    category: string
     date?: Date | string
   }
 
@@ -2111,6 +2132,7 @@ export namespace Prisma {
     amount?: FloatFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+    category?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -2119,6 +2141,7 @@ export namespace Prisma {
     amount?: FloatFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+    category?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -2127,6 +2150,7 @@ export namespace Prisma {
     amount: number
     description: string
     type: $Enums.TransactionType
+    category: string
     date?: Date | string
   }
 
@@ -2134,6 +2158,7 @@ export namespace Prisma {
     amount?: FloatFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+    category?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -2142,6 +2167,7 @@ export namespace Prisma {
     amount?: FloatFieldUpdateOperationsInput | number
     description?: StringFieldUpdateOperationsInput | string
     type?: EnumTransactionTypeFieldUpdateOperationsInput | $Enums.TransactionType
+    category?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -2205,6 +2231,7 @@ export namespace Prisma {
     amount?: SortOrder
     description?: SortOrder
     type?: SortOrder
+    category?: SortOrder
     date?: SortOrder
   }
 
@@ -2218,6 +2245,7 @@ export namespace Prisma {
     amount?: SortOrder
     description?: SortOrder
     type?: SortOrder
+    category?: SortOrder
     date?: SortOrder
   }
 
@@ -2226,6 +2254,7 @@ export namespace Prisma {
     amount?: SortOrder
     description?: SortOrder
     type?: SortOrder
+    category?: SortOrder
     date?: SortOrder
   }
 
