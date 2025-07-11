@@ -1,6 +1,6 @@
 
 import { NextApiRequest, NextApiResponse } from 'next';
-import { PrismaClient, TransactionType } from '../../generated/prisma';
+import {  TransactionType } from '../../generated/prisma';
 import prisma from '@/prisma/prisma';
 
 

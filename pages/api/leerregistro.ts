@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { PrismaClient } from "../../generated/prisma";
 import prisma from "@/prisma/prisma";
 
 // Create a single instance of PrismaClient
