@@ -1,19 +1,26 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '@/prisma/prisma';
-import bcrypt from 'bcryptjs';
+import { NextApiRequest, NextApiResponse } from "next";
+import prisma from "@/prisma/prisma";
+import bcrypt from "bcryptjs";
 
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
+  // Handle preflight request
+  if (req.method === "OPTIONS") {
+    res.status(200).end();
+    return;
   }
-
   try {
     const { email, password, name } = req.body;
 
     // Validate input
     if (!email || !password || !name) {
-      return res.status(400).json({ message: 'Missing required fields' });
+      return res.status(400).json({ message: "Missing required fields" });
     }
 
     // Check if user already exists
@@ -22,7 +29,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
 
     if (existingUser) {
-      return res.status(400).json({ message: 'User already exists' });
+      return res.status(400).json({ message: "User already exists" });
     }
 
     // Hash password
@@ -42,7 +49,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     return res.status(201).json(userWithoutPassword);
   } catch (error) {
-    console.error('Registration error:', error);
-    return res.status(500).json({ message: 'Internal server error' });
+    console.error("Registration error:", error);
+    return res.status(500).json({ message: "Internal server error" });
   }
 }
