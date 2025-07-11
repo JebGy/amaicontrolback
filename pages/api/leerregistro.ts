@@ -23,6 +23,7 @@ export default async function handler(
     return res.status(500).json({
       error: "Error al leer registros",
       details: "Error desconocido",
+      message: error instanceof Error ? error.message : "Error desconocido",
     });
   }
 }
