@@ -1,6 +1,6 @@
 
 import { NextApiRequest, NextApiResponse } from 'next';
-import { PrismaClient, TransactionType } from '../../../generated/prisma';
+import { PrismaClient, TransactionType } from '../../generated/prisma';
 
 const prisma = new PrismaClient();
 
