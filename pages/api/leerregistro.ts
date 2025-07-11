@@ -1,7 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "../../generated/prisma";
+import prisma from "@/prisma/prisma";
 
-const prisma = new PrismaClient();
+// Create a single instance of PrismaClient
+
 
 export default async function handler(
   req: NextApiRequest,
@@ -19,7 +21,17 @@ export default async function handler(
       orderBy: { date: "desc" },
     });
     return res.json(registros);
-  } catch (error) {
-    return res.json({ error: "Error al leer registros", details: error });
+  } catch (error: any) {
+    console.error('Database error:', error);
+    if (error?.name === 'PrismaClientInitializationError') {
+      return res.status(500).json({
+        error: "Error de conexión a la base de datos",
+        details: "Verifique la configuración de la base de datos y las variables de entorno"
+      });
+    }
+    return res.status(500).json({
+      error: "Error al leer registros",
+      details: error?.message || 'Error desconocido'
+    });
   }
 }
