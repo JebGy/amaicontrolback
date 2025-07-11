@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npx prisma generate && next build",
+    "prebuild":"npx prisma generate",
+    "postinstall": "npx prisma generate",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
