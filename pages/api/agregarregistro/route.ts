@@ -4,7 +4,7 @@ import { PrismaClient, TransactionType } from '../../../generated/prisma';
 
 const prisma = new PrismaClient();
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const body = await req.body;
     const { amount, description, category, type, date } = body;

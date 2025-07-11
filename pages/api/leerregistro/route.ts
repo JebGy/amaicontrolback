@@ -4,7 +4,7 @@ import { PrismaClient } from '../../../generated/prisma';
 
 const prisma = new PrismaClient();
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export default  async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const registros = await prisma.transaction.findMany({
       orderBy: { date: 'desc' },
